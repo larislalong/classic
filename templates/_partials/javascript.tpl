@@ -25,8 +25,8 @@
 {foreach $javascript.external as $js}
   <script type="text/javascript" src="{$js.uri}" {$js.attribute}></script>
 {/foreach}
-{*<script type="text/javascript" src="/themes/classic/assets/js/blur.js"></script>
-<script type="text/javascript" src="/themes/classic/assets/js/vague.js"></script>*}
+{*<script type="text/javascript" src="/themes/classic/assets/js/blur.js"></script>*}
+<script type="text/javascript" src="/themes/classic/assets/js/jquery-scrolltofixed-min.js"></script>
 
 {foreach $javascript.inline as $js}
   <script type="text/javascript">

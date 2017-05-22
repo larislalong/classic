@@ -7544,6 +7544,9 @@ margin-top: -42px;
 	margin-top: -236px !important;
 	position: relative;
 }
+.ls-fullwidth .ls-bottom-nav-wrapper {
+  display: none !important;
+}
 
 .block.logo_arnaud.ApHtml img {
 	max-height: 171px;
@@ -7649,7 +7652,7 @@ margin-top: -42px;
   font-size: 18px;
   margin: 10px 0px;
 }
-#layerslider_2_2 h2::before,
+#layerslider_2_2 h2 span::before,
 #index h2 span::before {
 	background-color: #000;
 	content: "";
@@ -7666,7 +7669,7 @@ margin-top: -42px;
 	-khtml-transform: rotate(4deg);
 }
 
-#layerslider_2_2 h2::after,
+#layerslider_2_2 h2 span::after,
 #index h2 span::after {
 	background-color: #000;
 	content: "";
@@ -7683,8 +7686,8 @@ margin-top: -42px;
 	-khtml-transform: rotate(4deg);
 }
 
-#layerslider_2_2 h2::before,
-#layerslider_2_2 h2::after {
+#layerslider_2_2 h2 span::before,
+#layerslider_2_2 h2 span::after {
     background-color: #fff !important;
     /* position: relative !important; */
     /* left: auto; */
@@ -7692,7 +7695,6 @@ margin-top: -42px;
     /* bottom: auto; */
     /* right: auto; */
     margin: 0;
-	display: none;
 }
 #index .bloc_vignoble_home h2 span::after {
     bottom: 70px;
@@ -7701,6 +7703,18 @@ margin-top: -42px;
 #index .bloc_vignoble_home h2 span::before {
     bottom: 100px;
     left: -60px;
+}
+#layerslider_2_2 h2 span {
+  font-size: 80px;
+  text-transform: lowercase;
+}
+#layerslider_2_2 h2 span::before {
+    bottom: 60px;
+    left: -385px;
+}
+#layerslider_2_2 h2 span::after {
+    bottom: 24px;
+    right: -80px;
 }
 #index .nos_vins {
   margin: 180px 0 0 0;
@@ -7768,6 +7782,9 @@ margin-top: -42px;
   right: -75px;
   top: 75px;
   background-color: #fff;
+}
+#index .bloc_developpement .developpement_animate {
+  height: 760px;
 }
 #index .bloc_developpement table {
   width: 100%;
@@ -8084,7 +8101,7 @@ margin-top: -42px;
 }
 
 .row.actualites_home.ApRow.has-bg.bg-boxed {
-	margin-top: 60px;
+	margin-top: 100px;
 	z-index: 2;
 }
 
@@ -9053,20 +9070,36 @@ margin-top: -42px;
     .footer-container .footer-contact-block .footer-contact li.contact-email {
     background: url(../img/envelope.png) no-repeat 0 center transparent;
 }
-.scrolltop-block {
+.scrolltop-block,
+.scrollbottom-block {
   text-align: center;
   clear: both;
   height: 50px;
   padding-top: 20px;
 }
+.scrollbottom-block {
+  position: relative;
+  z-index: 999999;
+  height: 0;
+  padding: 0;
+  margin: 0 auto;
+}
+.scrollbottom-block #scrollbottom-btn,
 .scrolltop-block #scrolltop-btn {
-  background: url(../img/back_to_top.png) no-repeat 0 center transparent;
   width: 49px;
   height: 47px;
   font-size: 0;
   margin: auto;
-  margin-bottom: -100px;
   cursor: pointer;
+}
+.scrolltop-block #scrolltop-btn {
+  background: url(../img/back_to_top.png) no-repeat 0 center transparent;
+  margin-bottom: -100px;
+}
+.scrollbottom-block #scrollbottom-btn {
+  background: url(../img/go-down-btn.png) no-repeat 0 center transparent;
+  margin-top: -70px;
+  /* position: absolute; */
 }
 #footer-logo {
   background: url(../img/logo_arnaud_villeneuve_footer.png) no-repeat 0 center transparent;
@@ -9232,6 +9265,9 @@ margin-top: -42px;
     z-index: 2;
     position: relative;
   }
+  #header .header-nav .container {
+    padding: 0;
+  }
     #header .header-nav #menu-icon {
       vertical-align: middle;
       cursor: pointer;
@@ -9348,8 +9384,13 @@ margin-top: -42px;
         font-size: 20px;
         }
   #header .header-top {
-    padding-bottom: 0;position: relative;
-        z-index: 1; }
+    padding-bottom: 0;
+    position: relative;
+    z-index: 1;
+    /* top: -60px !important; */
+    /* padding-top: 18px; */
+    /* border-top: 60px solid #fff; */
+    }
     #header .header-top > .container {
       position: relative;
       z-index: 2;
@@ -9447,6 +9488,23 @@ margin-top: -42px;
   color: #fff;
   /* font-size: 14px; */
   }
+
+.scrollfixed .row .row.ApRow,
+.scrollfixed:after {
+  display: none !important;
+}
+.scrollfixed .menu {
+  margin-top: 50px !important;
+  padding: 0  !important;
+}
+.scrollfixed .menu #top-menu {
+  text-align: right !important;
+  background-image: url(../img/mini-logo.png);
+  background-repeat: no-repeat;
+  background-position: 30px center;
+  background-size: 45px;
+  max-width: 1175px;
+}
 
 /*** Responsive part ***/
 @media (max-width: 767px) {
