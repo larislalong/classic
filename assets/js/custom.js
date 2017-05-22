@@ -34,4 +34,10 @@ jQuery(function($){
             $('#header .header-top').removeClass('scrollfixed');
         }
     });
+
+    $('#searchbar-top .search-widget form button[type=submit]').on('click', function(e){
+		e.preventDefault();
+        $('#searchbar-top .search-widget form input[type=text]').slideToggle();
+		$(this).toggleClass('opened');
+    });
 });
