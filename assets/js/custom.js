@@ -2,12 +2,12 @@
  * Custom code goes here.
  * A template should always ship with an empty custom.js
  */
-
+ 
 jQuery(function($){
-    $('#animate-big-svg').load('/arnaudvilleneuve/themes/classic/assets/animationSVG/svg.html');
-    $('#animate-env-svg').load('/arnaudvilleneuve/themes/classic/assets/img/picto_environement.svg');
-    $('#animate-soc-svg').load('/arnaudvilleneuve/themes/classic/assets/img/picto_social.svg');
-    $('#animate-eco-svg').load('/arnaudvilleneuve/themes/classic/assets/img/picto_economie.svg');
+    $('#animate-big-svg').load(base_url+'themes/classic/assets/animationSVG/svg.html');
+    $('#animate-env-svg').load(base_url+'themes/classic/assets/img/picto_environement.svg');
+    $('#animate-soc-svg').load(base_url+'themes/classic/assets/img/picto_social.svg');
+    $('#animate-eco-svg').load(base_url+'themes/classic/assets/img/picto_economie.svg');
     $("#scrolltop-btn").click(function() {
         $('html, body').animate({
             scrollTop: 0
@@ -34,10 +34,30 @@ jQuery(function($){
             $('#header .header-top').removeClass('scrollfixed');
         }
     });
-
+	
     $('#searchbar-top .search-widget form button[type=submit]').on('click', function(e){
-		e.preventDefault();
-        $('#searchbar-top .search-widget form input[type=text]').slideToggle();
-		$(this).toggleClass('opened');
+		var $searchInput = $('#searchbar-top .search-widget form input[type=text]');
+		if($(this).hasClass('opened')){
+			var searchQuery = $searchInput.val();
+			if(searchQuery != ''){
+				$('#searchbar-top .search-widget form').submit();
+			}else{
+				e.preventDefault();
+				$(this).removeClass('opened');	
+				$searchInput.slideUp();
+			}
+		}else{
+			e.preventDefault();
+			$(this).addClass('opened');	
+			$searchInput.slideDown();
+		}
     });
+	
+	$('#product-category-carousel').slick({
+		dots: true,
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 15000,
+	});
 });

@@ -22,17 +22,9 @@
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
+ {*$product|var_dump*}
 {if $product.show_price}
     <div class="product-prices">
-        {block name='product_discount'}
-          {if $product.has_discount}
-            <div class="product-discount">
-              {hook h='displayProductPriceBlock' product=$product type="old_price"}
-              <span class="regular-price">{$product.regular_price}</span>
-            </div>
-          {/if}
-        {/block}
-
         {block name='product_price'}
           <div
             class="product-price h5 {if $product.has_discount}has-discount{/if}"
@@ -46,7 +38,7 @@
             <div class="current-price">
               <span itemprop="price" content="{$product.price_amount}">{$product.price}</span>
 
-              {if $product.has_discount}
+              {*if $product.has_discount}
                 {if $product.discount_type === 'percentage'}
                   <span class="discount discount-percentage">{l s='Save %percentage%' d='Shop.Theme.Catalog' sprintf=['%percentage%' => $product.discount_percentage_absolute]}</span>
                 {else}
@@ -54,16 +46,29 @@
                       {l s='Save %amount%' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.discount_to_display]}
                   </span>
                 {/if}
-              {/if}
+              {/if*}
             </div>
+			
+			{block name='product_discount'}
+			  {if $product.has_discount}
+				<div class="product-discount">
+				  {hook h='displayProductPriceBlock' product=$product type="old_price"}
+				  <span class="regular-price">{$product.regular_price}</span>
+				</div>
+			  {/if}
+			{/block}
+			
+            <div style="clear:both;"></div>
 
             {block name='product_unit_price'}
               {if $displayUnitPrice}
-                <p class="product-unit-price sub">{l s='(%unit_price%)' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>
+                <p class="product-unit-price sub">{l s='%unit_price%' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unity]}</p>
               {/if}
             {/block}
           </div>
         {/block}
+            
+		<div style="clear:both;"></div>
 
         {block name='product_without_taxes'}
           {if $priceDisplay == 2}
@@ -77,7 +82,7 @@
           {/if}
         {/block}
 
-        {block name='product_ecotax'}
+        {*block name='product_ecotax'}
           {if $product.ecotax.amount > 0}
             <p class="price-ecotax">{l s='Including %amount% for ecotax' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.ecotax.value]}
               {if $product.has_discount}
@@ -85,30 +90,34 @@
               {/if}
             </p>
           {/if}
-        {/block}
+        {/block*}
 
         {hook h='displayProductPriceBlock' product=$product type="weight" hook_origin='product_sheet'}
 
-        <div class="tax-shipping-delivery-label">
+        <div class="tax-shipping-delivery-label" style="display:none !important;">
           {if $configuration.display_taxes_label}
             {$product.labels.tax_long}
           {/if}
           {hook h='displayProductPriceBlock' product=$product type="price"}
           {hook h='displayProductPriceBlock' product=$product type="after_price"}
         </div>
-        {block name='product_availability'}
+        
+		<div id="product-availability-block" style="clear:both;">
+		{block name='product_availability'}
+			{l s='Disponibilité' d='Shop.Theme.Catalog'}&nbsp;:
             <span id="product-availability">
               {if $product.show_availability && $product.availability_message}
-                {if $product.availability == 'available'}
+                {*if $product.availability == 'available'}
                   <i class="material-icons product-available">&#xE5CA;</i>
                 {elseif $product.availability == 'last_remaining_items'}
                   <i class="material-icons product-last-items">&#xE002;</i>
                 {else}
                   <i class="material-icons product-unavailable">&#xE14B;</i>
-                {/if}
-                {$product.availability_message}
+                {/if*}
+				{$product.availability_message}
               {/if}
             </span>
         {/block}
+		</div>
     </div>
 {/if}

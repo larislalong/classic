@@ -50,8 +50,8 @@
   <section id="main" itemscope itemtype="https://schema.org/Product">
     <meta itemprop="url" content="{$product.url}">
 
-    <div class="row">
-      <div class="col-md-6">
+    <div id="product-info-block" class="row">
+      <div class="col-md-4">
         {block name='page_content_container'}
           <section class="page-content" id="content">
             {block name='page_content'}
@@ -75,10 +75,11 @@
           </section>
         {/block}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           {block name='page_header_container'}
             {block name='page_header'}
               <h1 class="h1" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
+			  <p class="product-conditionement sub">{l s='*vendu par carton de 6' d='Shop.Theme.Catalog' }</p>
             {/block}
           {/block}
           
@@ -149,7 +150,7 @@
         </div>
     </div>
     {block name='product_informations'}  
-        <section class="product-details clearfix">
+        <section class="product-details row clearfix">
             <div class="tabs">
                 <ul class="nav nav-tabs">
                     {if $product.description}
@@ -212,7 +213,7 @@
     
     {block name='product_accessories'}
       {if $accessories}
-        <section class="product-accessories clearfix">
+        <section class="product-accessories row clearfix">
           <h3 class="h5 text-uppercase">{l s='You might also like' d='Shop.Theme.Catalog'}</h3>
           <div class="products">
             {foreach from=$accessories item="product_accessory"}

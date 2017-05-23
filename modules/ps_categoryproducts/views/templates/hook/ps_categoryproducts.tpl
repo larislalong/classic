@@ -22,16 +22,18 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-
-{block name='social_sharing'}
-  {if $social_share_links}
-    <div class="social-sharing">
-      <ul>
-        {foreach from=$social_share_links item='social_share_link'}
-          <li><a href="{$social_share_link.url}"  class="{if $social_share_link.class == 'googleplus'}google{else}{$social_share_link.class}{/if}_link text-hide" title="{$social_share_link.label}" target="_blank">{$social_share_link.label}</a></li>
-        {/foreach}
-      </ul>
-      <span>{l s='Share' d='Shop.Theme.Actions'}</span>
-    </div>
-  {/if}
-{/block}
+<section id="product-category-more">
+	<h2>Vous<br><span>aimerez aussi</span></h2>
+	{*<h2>
+		{if $products|@count == 1}
+			{l s='%s other product in the same category:' sprintf=[$products|@count] d='Modules.Categoryproducts.Shop'}
+		{else}
+			{l s='%s other products in the same category:' sprintf=[$products|@count] d='Modules.Categoryproducts.Shop'}
+		{/if}
+	</h2>*}
+	<div id="product-category-carousel">
+		{foreach from=$products item="product"}
+			{include file="catalog/_partials/miniatures/product.tpl" product=$product}
+		{/foreach}
+	</div>
+</section>

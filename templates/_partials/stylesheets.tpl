@@ -26,6 +26,11 @@
   <link rel="stylesheet" href="{$stylesheet.uri}" type="text/css" media="{$stylesheet.media}">
 {/foreach}
 
+<link rel="stylesheet" type="text/css" href="{$urls.base_url}themes/classic/assets/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="{$urls.base_url}themes/classic/assets/slick/slick-theme.css">
+
+{*$page.page_name|var_dump*}
+
 {foreach $stylesheets.inline as $stylesheet}
   <style>
     {$stylesheet.content}
